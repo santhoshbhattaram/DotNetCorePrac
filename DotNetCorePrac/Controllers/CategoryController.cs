@@ -37,6 +37,7 @@ namespace DotNetCorePrac.Controllers
             {
                 _dbContext.Categories.Add(newCategory);
                 _dbContext.SaveChanges();
+                TempData["success"] = "Category created successfully";
                 return RedirectToAction("Index");
             }
             return View();
@@ -73,6 +74,7 @@ namespace DotNetCorePrac.Controllers
             {
                 _dbContext.Categories.Update(newCategory);
                 _dbContext.SaveChanges();
+                TempData["success"] = "Category updated successfully";
                 return RedirectToAction("Index");
             }
             return View();
@@ -112,10 +114,12 @@ namespace DotNetCorePrac.Controllers
                 Category obj = _dbContext.Categories.Find(Id);
                 if (obj== null)
                 {
+
                     return NotFound();    
                 }
                 _dbContext.Remove(obj);
                 _dbContext.SaveChanges();
+                TempData["success"] = "Category deleted successfully";
             }
             return RedirectToAction("Index");
         }
