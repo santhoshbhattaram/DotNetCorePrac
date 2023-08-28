@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DotNetCorePrac.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230823204159_SeedMigrationCategoryTable")]
-    partial class SeedMigrationCategoryTable
+    [Migration("20230828172341_ApplicationDbContextMigration")]
+    partial class ApplicationDbContextMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,7 +37,8 @@ namespace DotNetCorePrac.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.HasKey("Id");
 
